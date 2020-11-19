@@ -1,11 +1,11 @@
-'use strict';
-export const getDetails = async e => {
+"use strict";
+export const getDetails = async (e) => {
   try {
     let response = await fetch(
-      `https://api.github.com/repos/HackYourFuture/${e.target.value}`,
+      `https://api.github.com/repos/HackYourFuture/${e.target.value}`
     );
     let repoData = await response.json();
-    let repoInformation = '';
+    let repoInformation = "";
     repoInformation += `
           <table class="table">
               <tr>
@@ -36,10 +36,10 @@ export const getDetails = async e => {
               </tr>
               </table>
               </div>`;
-    let repoDetailsDiv = document.getElementById('details');
+    let repoDetailsDiv = document.getElementById("details");
     repoDetailsDiv.innerHTML = repoInformation;
   } catch {
-    document.getElementById('details').innerHTML = `
+    document.getElementById("details").innerHTML = `
         
     <p class="error">Network request failed</p>
     `;

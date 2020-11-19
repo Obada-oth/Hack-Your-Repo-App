@@ -1,5 +1,5 @@
 export function paginate(contributors, wrapper, contributorsPerPage, page) {
-  wrapper.innerHTML = '';
+  wrapper.innerHTML = "";
   page--;
 
   let start = contributorsPerPage * page;
@@ -7,7 +7,7 @@ export function paginate(contributors, wrapper, contributorsPerPage, page) {
   let paginatedContributors = contributors.slice(start, end);
   for (let i = 0; i < paginatedContributors.length; i++) {
     let contributor = paginatedContributors[i];
-    let contributorElement = document.createElement('li');
+    let contributorElement = document.createElement("li");
     contributorElement.innerHTML = `
                 <div class="cont">
                 <img src=${contributor.avatar_url} class="cont-img">
@@ -25,7 +25,7 @@ export function paginate(contributors, wrapper, contributorsPerPage, page) {
 }
 
 export function setupPagination(contributors, wrapper, contributorsPerPage) {
-  wrapper.innerHTML = '';
+  wrapper.innerHTML = "";
 
   let numOfPages = Math.ceil(contributors.length / contributorsPerPage);
   for (let i = 1; i < numOfPages + 1; i++) {
@@ -35,24 +35,24 @@ export function setupPagination(contributors, wrapper, contributorsPerPage) {
 }
 
 export function paginationButton(page, contributorsData) {
-  const contributorsOutput = document.getElementById('contributors-list');
+  const contributorsOutput = document.getElementById("contributors-list");
   let currentPage = 1;
   let rows = 5;
-  let button = document.createElement('button');
+  let button = document.createElement("button");
   button.innerText = page;
 
   if (currentPage === page) {
-    button.classList.add('active');
+    button.classList.add("active");
   }
 
-  button.addEventListener('click', function() {
+  button.addEventListener("click", function () {
     currentPage = page;
     paginate(contributorsData, contributorsOutput, rows, currentPage);
 
-    let currentBtn = document.querySelector('.page-numbers button.active');
-    currentBtn.classList.remove('active');
+    let currentBtn = document.querySelector(".page-numbers button.active");
+    currentBtn.classList.remove("active");
 
-    button.classList.add('active');
+    button.classList.add("active");
   });
 
   return button;
